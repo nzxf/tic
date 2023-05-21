@@ -6,23 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/5525/5525454.png" type="image/x-icon">
 </head>
 <body>
     <header>
-        <div class="left-header"></div>
-        <div class="mid-header"></div>
-        <div class="right-header"></div>
+        <div class="left-header">
+            <div class="player blue">Player Blue</div>
+        </div>
+        <div class="mid-header">
+            <button class="start">Wanna play?</button>
+        </div>
+        <div class="right-header">
+            <div class="player red">Player Red</div>
+        </div>
     </header>
     <div class="board-container">
-        <button class="cel cel0" value="0">0</button>
-        <button class="cel cel1" value="1">1</button>
-        <button class="cel cel2" value="2">2</button>
-        <button class="cel cel3" value="3">3</button>
-        <button class="cel cel4" value="4">4</button>
-        <button class="cel cel5" value="5">5</button>
-        <button class="cel cel6" value="6">6</button>
-        <button class="cel cel7" value="7">7</button>
-        <button class="cel cel8" value="8">8</button>
+        <button class="cells cell0" value="0"></button>
+        <button class="cells cell1" value="1"></button>
+        <button class="cells cell2" value="2"></button>
+        <button class="cells cell3" value="3"></button>
+        <button class="cells cell4" value="4"></button>
+        <button class="cells cell5" value="5"></button>
+        <button class="cells cell6" value="6"></button>
+        <button class="cells cell7" value="7"></button>
+        <button class="cells cell8" value="8"></button>
     </div>    
 
     <script src="script.js"></script>
