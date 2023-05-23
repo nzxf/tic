@@ -1,6 +1,6 @@
 // PLAYER FACTORY
 const Player = (id, mark) => {
-    const turn = () => `Now is the ${id}'s turn`
+    const turn = () => `It's ${id}'s turn now`
     const win = () => `${id} is the winner!!!`
     const first = () => `${id} goes first`
     return { id, mark, turn, win, first }
@@ -94,7 +94,7 @@ cells.forEach(cell => cell.addEventListener('click', function() {
     isWinning()
 }))
 
-
+updatePrompt("Click start to play\nThe first player will be choosen randomly")
 const startButton = document.querySelector(".start")
 startButton.addEventListener('click', function() {
     board = makeBoard()

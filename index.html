@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div class="prompt"></div>
     <div class="frame">
         <div class="board-container">
             <div class="left-stick">
@@ -41,13 +42,16 @@
                 <div class="stick"></div>
             </div>
         </div>
+        <div class="control-container">
+            <div class="stick-control"></div>
+            <div class="panel players player-x">PLAYER X</div>
+            <div class="stick-control"></div>
+            <button class="panel start">START</button>
+            <div class="stick-control"></div>
+            <div class="panel players player-o">PLAYER O</div>
+            <div class="stick-control"></div>
+        </div>
     </div>
-    <div class="control">
-        <div class="players player-x">Player X</div>
-        <button class="start">Wanna play?</button>
-        <div class="players player-o">Player O</div>
-    </div>
-    <div class="prompt"></div>
 
     <script src="script.js"></script>
 </body>
