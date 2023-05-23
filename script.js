@@ -39,6 +39,22 @@ const updateDisplay = () => cells.forEach(cell => {
 const prompt = document.querySelector(".prompt")
 const updatePrompt = string => prompt.innerText = string
 
+// TURN LIGHT
+const toggleLight = string => {
+    const playerX = document.querySelector(".player-x")
+    const playerO = document.querySelector(".player-o")
+    if (string == x) {
+        playerX.classList.add("player-turn")
+        playerO.classList.remove("player-turn")
+    } else if (string == o) {
+        playerO.classList.add("player-turn")
+        playerX.classList.remove("player-turn")
+    } else if (string == "tie") {
+        playerO.classList.add("player-turn")
+        playerX.classList.add("player-turn")
+    }
+}
+
 // GAMEOVER? 
 const isWinning = () => {
     let marks = currentPlayer.mark.repeat(3)
@@ -55,40 +71,39 @@ const isWinning = () => {
             cells.forEach(cell => cell.disabled = true)
             updatePrompt(currentPlayer.win().toUpperCase())
             break;
-        default: // MOVE ON TO NEXT PLAYER
+        default:
             // TIE
             if (!board.includes('')) {
+                toggleLight("tie")
                 return updatePrompt("IT'S A TIE")
             }
+            // MOVE ON TO NEXT PLAYER
             nextPlayer()
             updatePrompt(currentPlayer.turn().toUpperCase())
+            toggleLight(currentPlayer)
     }
 }
 
 
 // INPUT
-const playerInput = () => {
-    cells.forEach(cell => cell.addEventListener('click', function() {
-        cell.disabled = true
+cells.forEach(cell => cell.addEventListener('click', function() {
+    cell.disabled = true
+    board[cell.value] = currentPlayer.mark
+    console.log(`${currentPlayer.id} put ${currentPlayer.mark} on cell no ${cell.value}`);
+    updateDisplay()
+    isWinning()
+}))
 
-        // FIXME: doubling up the board + currentPlayer after each game
-        board[cell.value] = currentPlayer.mark
-        console.log(`${currentPlayer.id} put ${currentPlayer.mark} on cell no ${cell.value}`);
-
-        updateDisplay(board)
-        isWinning(board)
-    }))
-}
 
 const startButton = document.querySelector(".start")
 startButton.addEventListener('click', function() {
-    // RESET
     board = makeBoard()
+    currentPlayer = allPlayers[randomPlayer(allPlayers)]
     // currentPlayer = allPlayers[randomPlayer(allPlayers)]
 
     cells.forEach(cell => cell.disabled = false)
     //PLAYER INPUT
     updatePrompt(currentPlayer.first());
+    toggleLight(currentPlayer)
     updateDisplay()
-    playerInput();
 })
