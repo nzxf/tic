@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,25 +9,47 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/5525/5525454.png" type="image/x-icon">
 </head>
+
 <body>
-    <header>
-            <div class="player player-x">Player X</div>
-            <button class="start">Wanna play?</button>
-            <div class="player player-o">Player O</div>
-    </header>
+    <div class="frame">
+        <div class="board-container">
+            <div class="left-stick">
+                <div class="stick"></div>
+                <button class="cells cell0" value="0" disabled></button>
+                <div class="stick"></div>
+                <button class="cells cell1" value="1" disabled></button>
+                <div class="stick"></div>
+                <button class="cells cell2" value="2" disabled></button>
+                <div class="stick"></div>
+            </div>
+            <div class="mid-stick">
+                <div class="stick"></div>
+                <button class="cells cell3" value="3" disabled></button>
+                <div class="stick"></div>
+                <button class="cells cell4" value="4" disabled></button>
+                <div class="stick"></div>
+                <button class="cells cell5" value="5" disabled></button>
+                <div class="stick"></div>
+            </div>
+            <div class="right-stick">
+                <div class="stick"></div>
+                <button class="cells cell6" value="6" disabled></button>
+                <div class="stick"></div>
+                <button class="cells cell7" value="7" disabled></button>
+                <div class="stick"></div>
+                <button class="cells cell8" value="8" disabled></button>
+                <div class="stick"></div>
+            </div>
+        </div>
+    </div>
+    <div class="control">
+        <div class="player player-x">Player X</div>
+        <button class="start">Wanna play?</button>
+        <div class="player player-o">Player O</div>
+    </div>
     <div class="prompt"></div>
-    <div class="board-container">
-        <button class="cells cell0" value="0" disabled></button>
-        <button class="cells cell1" value="1" disabled></button>
-        <button class="cells cell2" value="2" disabled></button>
-        <button class="cells cell3" value="3" disabled></button>
-        <button class="cells cell4" value="4" disabled></button>
-        <button class="cells cell5" value="5" disabled></button>
-        <button class="cells cell6" value="6" disabled></button>
-        <button class="cells cell7" value="7" disabled></button>
-        <button class="cells cell8" value="8" disabled></button>
-    </div>    
 
     <script src="script.js"></script>
 </body>
+
 </html>

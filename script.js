@@ -41,11 +41,6 @@ const updatePrompt = string => prompt.innerText = string
 
 // GAMEOVER? 
 const isWinning = () => {
-    // TIE
-    if (!board.includes('')) {
-        return updatePrompt("IT'S A TIE")
-    }
-    // WIN
     let marks = currentPlayer.mark.repeat(3)
     switch (marks) {
         case [board[0], board[1], board[2]].join(''): // Horizontal
@@ -56,11 +51,15 @@ const isWinning = () => {
         case [board[2], board[5], board[8]].join(''): // Vertical
         case [board[0], board[4], board[8]].join(''): // Diagonal
         case [board[2], board[4], board[6]].join(''): // Diagonal
+            // WIN
             cells.forEach(cell => cell.disabled = true)
             updatePrompt(currentPlayer.win().toUpperCase())
             break;
-        // MOVE ON TO NEXT PLAYER
-        default:
+        default: // MOVE ON TO NEXT PLAYER
+            // TIE
+            if (!board.includes('')) {
+                return updatePrompt("IT'S A TIE")
+            }
             nextPlayer()
             updatePrompt(currentPlayer.turn().toUpperCase())
     }
@@ -72,9 +71,10 @@ const playerInput = () => {
     cells.forEach(cell => cell.addEventListener('click', function() {
         cell.disabled = true
 
+        // FIXME: doubling up the board + currentPlayer after each game
         board[cell.value] = currentPlayer.mark
         console.log(`${currentPlayer.id} put ${currentPlayer.mark} on cell no ${cell.value}`);
-        
+
         updateDisplay(board)
         isWinning(board)
     }))
