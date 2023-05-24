@@ -12,45 +12,48 @@
 
 <body>
     <div class="prompt"></div>
-    <div class="frame">
-        <div class="board-container">
-            <div class="left-stick">
-                <div class="stick"></div>
-                <button class="cells cell0" value="0" disabled></button>
-                <div class="stick"></div>
-                <button class="cells cell1" value="1" disabled></button>
-                <div class="stick"></div>
-                <button class="cells cell2" value="2" disabled></button>
-                <div class="stick"></div>
+    <div class="the-game">
+        <div class="frame">
+            <div class="board-container">
+                <div class="left-stick">
+                    <div class="stick"></div>
+                    <button class="cells cells-even cell0" value="0" disabled></button>
+                    <div class="stick"></div>
+                    <button class="cells  cells-odd cell1" value="1" disabled></button>
+                    <div class="stick"></div>
+                    <button class="cells cells-even cell2" value="2" disabled></button>
+                    <div class="stick"></div>
+                </div>
+                <div class="mid-stick">
+                    <div class="stick"></div>
+                    <button class="cells cells-odd cell3" value="3" disabled></button>
+                    <div class="stick"></div>
+                    <button class="cells cells-even cell4" value="4" disabled></button>
+                    <div class="stick"></div>
+                    <button class="cells  cells-odd cell5" value="5" disabled></button>
+                    <div class="stick"></div>
+                </div>
+                <div class="right-stick">
+                    <div class="stick"></div>
+                    <button class="cells cells-even cell6" value="6" disabled></button>
+                    <div class="stick"></div>
+                    <button class="cells cells-odd cell7" value="7" disabled></button>
+                    <div class="stick"></div>
+                    <button class="cells cells-even cell8" value="8" disabled></button>
+                    <div class="stick"></div>
+                </div>
             </div>
-            <div class="mid-stick">
-                <div class="stick"></div>
-                <button class="cells cell3" value="3" disabled></button>
-                <div class="stick"></div>
-                <button class="cells cell4" value="4" disabled></button>
-                <div class="stick"></div>
-                <button class="cells cell5" value="5" disabled></button>
-                <div class="stick"></div>
-            </div>
-            <div class="right-stick">
-                <div class="stick"></div>
-                <button class="cells cell6" value="6" disabled></button>
-                <div class="stick"></div>
-                <button class="cells cell7" value="7" disabled></button>
-                <div class="stick"></div>
-                <button class="cells cell8" value="8" disabled></button>
-                <div class="stick"></div>
+            <div class="control-container">
+                <div class="stick-control"></div>
+                <div class="panel players player-x">PLAYER X</div>
+                <div class="stick-control"></div>
+                <button class="panel start">START</button>
+                <div class="stick-control"></div>
+                <div class="panel players player-o">PLAYER O</div>
+                <div class="stick-control"></div>
             </div>
         </div>
-        <div class="control-container">
-            <div class="stick-control"></div>
-            <div class="panel players player-x">PLAYER X</div>
-            <div class="stick-control"></div>
-            <button class="panel start">START</button>
-            <div class="stick-control"></div>
-            <div class="panel players player-o">PLAYER O</div>
-            <div class="stick-control"></div>
-        </div>
+        <div class="outer-frame"></div>
     </div>
 
     <script src="script.js"></script>
