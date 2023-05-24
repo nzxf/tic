@@ -15,7 +15,8 @@ body {
     height: 100vh;
     width: 100vw;
 
-    background-color: #E6E6E6;
+    background-color: #f3f3f383;
+    /* background: linear-gradient(to bottom, #f3f3f383 0%, white 86.7%, #f7f7f7 87.5%); */
 }
 
 
@@ -28,7 +29,7 @@ body {
 
 
 .frame {
-    margin: 20px 0;
+    margin: 10px 0;
 
     border-top-left-radius: 65px;
     border-top-right-radius: 65px;
@@ -47,7 +48,7 @@ body {
     border-left: solid 7px #002e63;
     /* border-top: solid 70px #E6E6E6; */
     border-bottom: solid 5px #E6E6E6;
-    transform: translateY(-20px);
+    transform: translateY(-10px);
 }
 
 .board-container {
@@ -60,7 +61,13 @@ body {
     border-top-left-radius: 35px;
 
     border-left: solid 7px #002e63;
-    border-bottom: solid 5px #A37765;
+    border-bottom: solid 11px #BF9377;
+}
+
+.bar {
+    height: 9px;
+    width: 100%;
+    background-color: #A37765;
 }
 
 .left-stick,
@@ -91,7 +98,7 @@ body {
     transition: width .3s;
 
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.);
 }
 
 .cells-even {
@@ -119,20 +126,15 @@ body {
 .cells-start {
     width: 15px;
 
-    border-bottom: 0;
-    border-right: 0;
-    border-left: solid 15px rgba(138, 138, 138, 0.5);
-    border-top: solid 3px rgba(138, 138, 138, 0.5);
-
+    border: 0;
     box-shadow: -3px 3px 5px rgba(128, 128, 128, 0.5);
 
     transition: width .3s;
 }
 
 .control-container {
-    border-top: solid 15px #885b49;
     border-left: solid 7px #002e63;
-    border-bottom: solid 5px #E6E6E6;
+    border-bottom: solid 5px #f7f7f7;
 
     display: flex;
     align-items: center;
@@ -158,14 +160,23 @@ body {
     background-color: rgb(206, 206, 206);
 
     font-size: 1.1rem;
-    color: rgb(112, 112, 112);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: bold;
 
     box-shadow: 3px 2px 3px rgba(128, 128, 128, 0.5);
+
+    transition: height .3s, color .5s;
+    overflow: hidden;
 }
 
 .start {
     height: 40px;
+    transition: height .3s;
+}
+
+.start-restart {
+    height: 18px;
+    transition: height .3s;
 }
 
 .start:hover {
@@ -181,14 +192,19 @@ body {
 
 .players {
     height: 18px;
-
     color: transparent;
-    transition: background-color .1s;
+    transition: height .3s, color .5s;
 }
 
 .player-turn {
     height: 40px;
     color: rgba(0, 0, 0, 0.8);
+    transition: height .3s, color 1s;
+}
+
+.player-start {
+    height: 40px;
+    transition: height .3s;
 }
 
 .prompt {
@@ -196,7 +212,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 4rem;
+    height: 1rem;
     width: 450px;
     color: rgba(0, 0, 0, 0.6);
     margin: 5px 0;

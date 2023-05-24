@@ -116,17 +116,20 @@ const reset = () => {
     players.forEach(player=> player.classList.remove("player-turn", "blink"))
     board = makeBoard()
     updateDisplay()
-    currentPlayer = ""
     updatePrompt("");
+    startButton.innerText = ""
 }
 
-updatePrompt("Click start to play\n(The first player will be randomly chosen)")
+updatePrompt("Click start to play")
 const startButton = document.querySelector(".start")
 startButton.addEventListener('click', function() {
     reset()
     blinks(".cells-odd", "cells-start", 1.5, 6)
     blinks(".cells-even", "cells-start", 1.75, 6)
+    blinks(".players", "player-start", 1.5, 6)
+    blinks(".start", "start-restart", 1.5, 6)
     setTimeout(function() {
+        startButton.innerText = "RESTART?"
         currentPlayer = allPlayers[randomPlayer(allPlayers)]
         cells.forEach(cell => cell.disabled = false)
         //PLAYER INPUT
