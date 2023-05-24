@@ -15,7 +15,6 @@ body {
     height: 100vh;
     width: 100vw;
 
-    background-color: #f3f3f383;
     /* background: linear-gradient(to bottom, #f3f3f383 0%, white 86.7%, #f7f7f7 87.5%); */
 }
 
@@ -47,7 +46,8 @@ body {
     border-top: solid 25px #002e63;
     border-left: solid 7px #002e63;
     /* border-top: solid 70px #E6E6E6; */
-    border-bottom: solid 5px #E6E6E6;
+    border-bottom: solid 5px white;
+
     transform: translateY(-10px);
 }
 
@@ -134,15 +134,16 @@ body {
 
 .control-container {
     border-left: solid 7px #002e63;
-    border-bottom: solid 5px #f7f7f7;
+    border-bottom: solid 5px white;
 
-    display: flex;
+    display: grid;
     align-items: center;
+    /* justify-content: center; */
+    grid-template-columns: 1fr 110px 1fr 110px 1fr 110px 1fr;
     height: 90px;
 }
 
 .stick-control {
-    width: 10px;
     height: 7.5px;
     background-color: rgb(161, 161, 161);
     border-bottom: solid 4px rgba(128, 128, 128, 0.5);
@@ -152,7 +153,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 117px;
 
     border-radius: 7.5px;
     border-right: solid 3px rgba(134, 134, 134, 0.4);
@@ -175,7 +175,7 @@ body {
 }
 
 .start-restart {
-    height: 18px;
+    height: 20px;
     transition: height .3s;
 }
 
@@ -191,7 +191,7 @@ body {
 }
 
 .players {
-    height: 18px;
+    height: 20px;
     color: transparent;
     transition: height .3s, color .5s;
 }
