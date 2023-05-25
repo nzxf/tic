@@ -28,9 +28,9 @@ const makeBoard = () => {
 }
 let board = makeBoard()
 
-const cells = document.querySelectorAll(".cells")
-cells.forEach(cell => cell.disabled = true)
+
 // UPDATE DISPLAY BOARD
+const cells = document.querySelectorAll(".cells")
 const updateDisplay = () => cells.forEach(cell => {
     cell.innerText = board[cell.value]
 })
@@ -40,7 +40,7 @@ const prompt = document.querySelector(".prompt")
 const updatePrompt = string => prompt.innerText = string
 
 // TURN LIGHT
-const toggleLight = string => {
+const togglePlayer = string => {
     const playerX = document.querySelector(".player-x")
     const playerO = document.querySelector(".player-o")
     if (string == x) {
@@ -55,7 +55,7 @@ const toggleLight = string => {
     }
 }
 
-// Toggling
+// SWITCHING/TOGGLING/BLINKING EFFECT
 const blinks = function(object, string, num, howMany) {
     for (let i = 0; i < howMany; i++) {
         setTimeout(function() {
@@ -64,10 +64,27 @@ const blinks = function(object, string, num, howMany) {
     }
 }
 
-// GAMEOVER? 
-const isWinning = () => {
+// WIN OR TIE SCENARIO
+const winCase = () => {
+    cells.forEach(cell => cell.disabled = true)
+    blinks(".cells", "cells-win", 1.5, 10)
+    blinks(currentPlayer.className, "blink", 1.5, 11)
+    updatePrompt(currentPlayer.win())
+}
+const tieCase = () => {
+    togglePlayer("tie")
+    blinks(".cells", "cells-start")
+
+    blinks(x.className, "blink", 3, 7)
+    blinks(o.className, "blink", 3, 7)
+    updatePrompt("It's a tie!")
+}
+
+// SOMEONE WINNING YET? 
+const isGameover = () => {
     let marks = currentPlayer.mark.repeat(3)
     switch (marks) {
+        // WIN
         case [board[0], board[1], board[2]].join(''): // Horizontal
         case [board[3], board[4], board[5]].join(''): // Horizontal
         case [board[6], board[7], board[8]].join(''): // Horizontal
@@ -76,27 +93,16 @@ const isWinning = () => {
         case [board[2], board[5], board[8]].join(''): // Vertical
         case [board[0], board[4], board[8]].join(''): // Diagonal
         case [board[2], board[4], board[6]].join(''): // Diagonal
-            // WIN
-            cells.forEach(cell => cell.disabled = true)
-            updatePrompt(currentPlayer.win())
-            blinks(".cells", "cells-start")
-
-            blinks(currentPlayer.className, "blink", 3, 7)
-            break;
+            return winCase();
         default:
             // TIE
             if (!board.includes('')) {
-                toggleLight("tie")
-                blinks(".cells", "cells-start")
-
-                blinks(x.className, "blink", 3, 7)
-                blinks(o.className, "blink", 3, 7)
-                return updatePrompt("It's a tie!")
+                return tieCase();
             }
             // MOVE ON TO NEXT PLAYER
             nextPlayer()
             updatePrompt(currentPlayer.turn())
-            toggleLight(currentPlayer)
+            togglePlayer(currentPlayer)
     }
 }
 
@@ -105,36 +111,42 @@ const isWinning = () => {
 cells.forEach(cell => cell.addEventListener('click', function() {
     cell.disabled = true
     board[cell.value] = currentPlayer.mark
-    console.log(`${currentPlayer.id} put ${currentPlayer.mark} on cell no ${cell.value}`);
     updateDisplay()
-    isWinning()
+    isGameover()
 }))
 
 // RESET
 const players = document.querySelectorAll(".players")
 const reset = () => {
-    players.forEach(player=> player.classList.remove("player-turn", "blink"))
+    players.forEach(player => player.classList.remove("player-turn", "blink"))
     board = makeBoard()
     updateDisplay()
     updatePrompt("");
     startButton.innerText = ""
 }
 
-updatePrompt("Click start to play")
-const startButton = document.querySelector(".start")
-startButton.addEventListener('click', function() {
-    reset()
+// EFFECT ON START
+const startEffect = () => {
     blinks(".cells-odd", "cells-start", 1.5, 6)
     blinks(".cells-even", "cells-start", 1.75, 6)
     blinks(".players", "player-start", 1.5, 6)
     blinks(".start", "start-restart", 1.5, 6)
+}
+
+// START
+updatePrompt("Push start to play")
+cells.forEach(cell => cell.disabled = true)
+const startButton = document.querySelector(".start")
+startButton.addEventListener('click', function() {
+    reset()
+    startEffect()
     setTimeout(function() {
         startButton.innerText = "RESTART?"
         currentPlayer = allPlayers[randomPlayer(allPlayers)]
         cells.forEach(cell => cell.disabled = false)
         //PLAYER INPUT
         updatePrompt(currentPlayer.first());
-        toggleLight(currentPlayer)
+        togglePlayer(currentPlayer)
         updateDisplay()
-    }, 1000)
+    }, 1200)
 })
